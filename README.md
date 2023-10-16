@@ -31,7 +31,7 @@ Install Dependencies:
 ```bash
 npm install
 ```
-# or
+or
 ```bash
 yarn install
 ```
