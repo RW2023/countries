@@ -41,28 +41,41 @@ const CountriesPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen" data-theme="corporate">
+    <div className="min-h-screen" data-theme="business">
       <h1 className="text-center py-8 text-4xl">Countries</h1>
       {loading ? (
         <Loading text="countries" />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
           {countries.map((country: Country, index: number) => (
-            <div key={index} className="p-6 rounded-lg shadow-lg">
-              <h2 className="mb-4 font-sans text-2xl">{country.name}</h2>
-              
+            <div
+              key={index}
+              className="p-6 rounded-lg shadow-lg"
+              data-theme="luxury"
+            >
+              <h2 className="mb-4 font-sans text-3xl text-center font-bold">
+                {country.name}
+              </h2>
+
               <p className="mb-2">
                 <strong>Currency:</strong>
-                {country.currencies && Object.entries(country.currencies)
-                  .map(([code, curr]) => `${curr.name} (${curr.symbol})`)
-                  .join(', ')}
+                {country.currencies &&
+                  Object.entries(country.currencies)
+                    .map(([code, curr]) => `${curr.name} (${curr.symbol})`)
+                    .join(', ')}
               </p>
               <p className="mb-2">
-                <strong>Languages:</strong> {country.languages.map(lang => lang.name).join(', ')}
+                <strong>Languages:</strong>{' '}
+                {country.languages.map((lang) => lang.name).join(', ')}
               </p>
-              <p className="mb-2"><strong>Flag:</strong> {country.emoji}</p>
-                <img src={country.flags.png} alt={`${country.name} flag`} className="w-full h-auto" />
-              
+              <p className="mb-2">
+                <strong>Flag:</strong> {country.emoji}
+              </p>
+              <img
+                src={country.flags.png}
+                alt={`${country.name} flag`}
+                className="w-full h-auto"
+              />
             </div>
           ))}
         </div>
