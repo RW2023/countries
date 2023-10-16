@@ -2,7 +2,7 @@
 
 Explore the diverse world of countries, their flags, languages, and currencies with the Countries Explorer app! Built with love using React, Next.js, Tailwind CSS, and DaisyUI.
 
-![App Preview](path-to-your-app-preview-image.png)
+![App Preview](/public/screeenShot.png)
 
 ## Features 🚀
 
