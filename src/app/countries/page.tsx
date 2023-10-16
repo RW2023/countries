@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-'use client'
 // src/app/countries/page.tsx
+'use client'
 import React, { useEffect, useState } from 'react';
 import Loading from '../../components/Loading';  // Adjust the path as necessary
 
