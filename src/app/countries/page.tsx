@@ -36,8 +36,8 @@ const CountriesPage = () => {
   }, []);
 
   return (
-    <div className="bg-background text-paragraph min-h-screen">
-      <h1 className="text-headline text-center py-8">Countries</h1>
+    <div className=" min-h-screen" data-theme="business">
+      <h1 className="text-center py-8">Countries</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {countries.map((country: Country, index: number) => (
           <div key={index} className="p-6 rounded-lg shadow-lg">
