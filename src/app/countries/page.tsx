@@ -86,7 +86,7 @@ const CountriesPage = () => {
               <img
                 src={country.flags.png}
                 alt={`${country.name} flag`}
-                className="w-full h-auto"
+                className="w-full h-auto border border-gray-400 rounded shadow-2xl transform transition-transform duration-300 hover:scale-105"
               />
             </div>
           ))}
