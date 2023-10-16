@@ -30,7 +30,9 @@ Install Dependencies:
 
 ```bash
 npm install
+```
 # or
+```bash
 yarn install
 ```
 
@@ -42,7 +44,9 @@ Build for Production:
 
 ```bash
 npm run build
-# or
+```
+or
+```bash
 yarn build
 ```
 
