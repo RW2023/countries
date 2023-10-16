@@ -62,7 +62,7 @@ const CountriesPage = () => {
           {filteredCountries.map((country: Country, index: number) => (
             <div
               key={index}
-              className="p-6 rounded-lg shadow-lg"
+              className="p-6 rounded-lg shadow-lg bg-secondary"
               data-theme="corporate"
             >
               <h2 className="mb-4 font-sans text-3xl text-center font-bold">
@@ -86,7 +86,7 @@ const CountriesPage = () => {
               <img
                 src={country.flags.png}
                 alt={`${country.name} flag`}
-                className="w-full h-auto border border-gray-400 rounded shadow-2xl transform transition-transform duration-300 hover:scale-105"
+                className="w-full h-auto border border-background rounded shadow-2xl transform transition-transform duration-300 hover:scale-105"
               />
             </div>
           ))}
