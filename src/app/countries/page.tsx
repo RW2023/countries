@@ -69,7 +69,7 @@ const CountriesPage = () => {
                 {country.name}
               </h2>
 
-              <p className="mb-2">
+              <p className="mb-2 text-green-700">
                 <strong>Currency:</strong>
                 {country.currencies &&
                   Object.entries(country.currencies)
