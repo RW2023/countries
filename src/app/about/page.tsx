@@ -3,7 +3,7 @@
 import { FC, useEffect } from 'react';
 import Link from 'next/link';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/default.css'; // Choose a style that you like
+import 'highlight.js/styles/default.css';
 
 interface Props {}
 
@@ -56,31 +56,79 @@ const AboutPage: FC<Props> = (): JSX.Element => {
             </p>
           </div>
         </div>
-        <section className="my-8">
-          <h3 className="text-xl font-bold mb-4">Example of REST API Usage:</h3>
-          <pre className="bg-gray-100 p-4 rounded-lg overflow-auto">
-            <code className="language-javascript">
-              {`
-                const restCountriesResponse = await axios.get('https://restcountries.com/v3.1/all');
-                const restCountriesData = restCountriesResponse.data;
-                const flagUrl = restCountriesData.find(country => country.cca2 === 'US').flags[1];
-              `}
-            </code>
-          </pre>
-        </section>
-        <section className="my-8">
-          <h3 className="text-xl font-bold mb-4">
-            Example of GraphQL API Usage:
-          </h3>
-          <pre className="bg-gray-100 p-4 rounded-lg overflow-auto ">
-            <code className="language-javascript">
-              {`
-                const graphqlQuery = \`{ countries { code, name, languages { code, name } } }\`;
-                const graphqlData = await request('https://countries.trevorblades.com', graphqlQuery);
-              `}
-            </code>
-          </pre>
-        </section>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* REST API Usage */}
+          <section className="border p-4">
+            <h2 className="text-2xl font-bold mb-4">
+              Example of REST API Usage:
+            </h2>
+            <pre className="bg-gray-100 p-4 rounded-lg overflow-auto">
+              <code className="language-javascript">
+                {`
+const restCountriesResponse = await axios.get('https://restcountries.com/v3.1/all');
+const restCountriesData = restCountriesResponse.data;
+const flagUrl = restCountriesData.find(country => country.cca2 === 'US').flags[1];
+                        `}
+              </code>
+            </pre>
+          </section>
+
+          {/* Explanation for REST API */}
+          <section className="border p-4">
+            <div className="mt-4">
+              <p>Explanation:</p>
+              <ul>
+                <li>
+                  <strong>Line 1:</strong> A GET request is sent to the REST API
+                  using Axios to retrieve all country data.
+                </li>
+                <li>
+                  <strong>Line 2:</strong> The response data is stored in the
+                  variable <code>restCountriesData</code>.
+                </li>
+                        <li>
+                            <strong>Line 3:</strong> The URL of the US flag is found by
+                            searching through the response data for the country with the
+                            code &apos;US&apos;, and accessing its flag URL.
+                        </li>
+                    </ul>
+                </div>
+          </section>
+
+          {/* GraphQL API Usage */}
+          <section className="border p-4">
+            <h2 className="text-2xl font-bold mb-4">
+              Example of GraphQL API Usage:
+            </h2>
+            <pre className="bg-gray-100 p-4 rounded-lg overflow-auto ">
+              <code className="language-javascript">
+                {`
+const graphqlQuery = \`{ countries { code, name, languages { code, name } } }\`;
+const graphqlData = await request('https://countries.trevorblades.com', graphqlQuery);
+                        `}
+              </code>
+            </pre>
+          </section>
+
+          {/* Explanation for GraphQL API */}
+          <section className="border p-4">
+            <div className="mt-4">
+              <p>Explanation:</p>
+              <ul>
+                <li>
+                  <strong>Line 1:</strong> The GraphQL query is defined,
+                  requesting country code, name, and languages.
+                </li>
+                <li>
+                  <strong>Line 2:</strong> The query is sent to the GraphQL API
+                  using the <code>request</code> function from the{' '}
+                  <code>graphql-request</code> library, and the response data is
+                  stored in the variable <code>graphqlData</code>.
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
         <div className="mt-8 text-center btn btn-ghost normal-case text-xl rounded  bg-button text-buttonText hover:text-headline">
           <Link href="/">Back to Home</Link>
         </div>
