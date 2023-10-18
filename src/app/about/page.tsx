@@ -5,6 +5,7 @@ import Link from 'next/link';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/default.css';
 
+
 interface Props {}
 
 const AboutPage: FC<Props> = (): JSX.Element => {
@@ -17,8 +18,10 @@ const AboutPage: FC<Props> = (): JSX.Element => {
       className="min-h-screen bg-base-200 p-6 flex flex-col justify-center text-center break-words"
       data-theme="black"
     >
-      <div className="container mx-auto">
-        <h1 className="text-4xl font-bold mb-6">About the Countries API App</h1>
+      <div className="container mx-auto bg-base text-paragraph">
+        <h1 className="text-4xl font-bold mb-6 text-headline">
+          About the Countries API App
+        </h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="border p-4">
             <p className="text-lg mb-4">
@@ -27,7 +30,7 @@ const AboutPage: FC<Props> = (): JSX.Element => {
             </p>
           </div>
           <div className="border p-4">
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-headline">
               Purpose of the Countries API
             </h2>
             <p className="text-lg mb-4">
@@ -37,8 +40,8 @@ const AboutPage: FC<Props> = (): JSX.Element => {
               data into their applications or platforms.
             </p>
           </div>
-          <div className="border p-4">
-            <h2 className="text-2xl font-bold mb-4">Usage</h2>
+          <div className="border p-4 mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-headline">Usage</h2>
             <p className="text-lg mb-4">
               Developers utilize the Countries API to fetch data regarding
               different countries, their languages, currencies, and much more.
@@ -46,8 +49,10 @@ const AboutPage: FC<Props> = (): JSX.Element => {
               platforms by providing relevant local information.
             </p>
           </div>
-          <div className="border p-4">
-            <h2 className="text-2xl font-bold mb-4">How to Use</h2>
+          <div className="border p-4 mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-headline">
+              How to Use
+            </h2>
             <p className="text-lg mb-4">
               The data from the Countries API can be accessed via RESTful
               endpoints or GraphQL queries, making it a flexible choice for
@@ -59,7 +64,7 @@ const AboutPage: FC<Props> = (): JSX.Element => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* REST API Usage */}
           <section className="border p-4">
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="text-2xl font-bold mb-4 text-headline">
               Example of REST API Usage:
             </h2>
             <pre className="bg-gray-100 p-4 rounded-lg overflow-auto">
@@ -76,23 +81,25 @@ const flagUrl = restCountriesData.find(country => country.cca2 === 'US').flags[1
           {/* Explanation for REST API */}
           <section className="border p-4">
             <div className="mt-4">
-              <p>Explanation:</p>
+              <p className="text-headline">Explanation:</p>
               <ul>
                 <li>
-                  <strong>Line 1:</strong> A GET request is sent to the REST API
-                  using Axios to retrieve all country data.
+                  <strong className="text-secondary">Line 1:</strong> A GET
+                  request is sent to the REST API using Axios to retrieve all
+                  country data.
                 </li>
                 <li>
-                  <strong>Line 2:</strong> The response data is stored in the
-                  variable <code>restCountriesData</code>.
+                  <strong className="text-secondary">Line 2:</strong> The
+                  response data is stored in the variable{' '}
+                  <code>restCountriesData</code>.
                 </li>
-                        <li>
-                            <strong>Line 3:</strong> The URL of the US flag is found by
-                            searching through the response data for the country with the
-                            code &apos;US&apos;, and accessing its flag URL.
-                        </li>
-                    </ul>
-                </div>
+                <li>
+                  <strong>Line 3:</strong> The URL of the US flag is found by
+                  searching through the response data for the country with the
+                  code &apos;US&apos;, and accessing its flag URL.
+                </li>
+              </ul>
+            </div>
           </section>
 
           {/* GraphQL API Usage */}
@@ -113,24 +120,26 @@ const graphqlData = await request('https://countries.trevorblades.com', graphqlQ
           {/* Explanation for GraphQL API */}
           <section className="border p-4">
             <div className="mt-4">
-              <p>Explanation:</p>
+              <p className="text-headline">Explanation:</p>
               <ul>
                 <li>
-                  <strong>Line 1:</strong> The GraphQL query is defined,
-                  requesting country code, name, and languages.
+                  <strong className="text-secondary">Line 1:</strong> The
+                  GraphQL query is defined, requesting country code, name, and
+                  languages.
                 </li>
                 <li>
-                  <strong>Line 2:</strong> The query is sent to the GraphQL API
-                  using the <code>request</code> function from the{' '}
-                  <code>graphql-request</code> library, and the response data is
-                  stored in the variable <code>graphqlData</code>.
+                  <strong className="text-secondary">Line 2:</strong> The query
+                  is sent to the GraphQL API using the <code>request</code>{' '}
+                  function from the <code>graphql-request</code> library, and
+                  the response data is stored in the variable{' '}
+                  <code>graphqlData</code>.
                 </li>
               </ul>
             </div>
           </section>
         </div>
         <div className="mt-8 text-center btn btn-ghost normal-case text-xl rounded  bg-button text-buttonText hover:text-headline">
-          <Link href="/">Back to Home</Link>
+          <Link href="/countries">Back to Countries</Link>
         </div>
       </div>
     </div>
