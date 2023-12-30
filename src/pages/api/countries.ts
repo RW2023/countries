@@ -26,8 +26,9 @@ interface RestCountry {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const restCountriesResponse = await axios.get(
-      'https://restcountries.com/v3.1/all',
+      'https://restcountries.com/v3.1/all?fields=name,flags,capital,currencies,languages,population,region,subregion,timezones',
     );
+
     const restCountriesData = restCountriesResponse.data;
 
     const graphqlQuery = `{ countries { code, name, languages { code, name } } }`;
