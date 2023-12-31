@@ -1,8 +1,8 @@
 // src/components/CountryCard.tsx
-import Link from 'next/link';
 import React from 'react';
-import { Country } from '@/utils/types'; // Adjust the import path
-
+import Link from 'next/link';
+import Image from 'next/image';
+import { Country } from '@/utils/types';
 
 interface CountryCardProps {
   country: Country;
@@ -11,10 +11,15 @@ interface CountryCardProps {
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
   return (
     <div className="country-card">
-      <h3>{country.name.common}</h3>
-      {/* Other country information */}
-      <Link href={`/app/countries/${country.code}/page`}>
-        <a>More about {country.name.common}</a>
+      <Link href={`/app/countries/${country.code}`}>
+        <div className="relative w-full h-64 cursor-pointer">
+          <Image
+            src={country.flags.png}
+            alt={`${country.name.common} flag`}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
       </Link>
     </div>
   );
