@@ -4,6 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import Loading from '../../components/Loading'; // Adjust the path as necessary
 import { Country } from '@/utils/types';
+import Heading from '@/components/Heading';
+import SubHeading from '@/components/SubHeading';
 
 const CountriesPage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -26,8 +28,8 @@ const CountriesPage = () => {
   );
 
   return (
-    <div className="min-h-screen" data-theme="business">
-      <h1 className="text-center py-8 text-4xl">Countries</h1>
+    <div className="min-h-screen">
+      <Heading title="Countries" iconClass="fas fa-globe" />{' '}
       <input
         type="text"
         placeholder="Search countries..."
@@ -42,25 +44,34 @@ const CountriesPage = () => {
           {filteredCountries.map((country, index) => (
             <div
               key={index}
-              className="p-6 rounded-lg shadow-lg bg-secondary"
-              data-theme="corporate"
+              className="p-6 rounded-lg shadow-lg bg-base-100 card-compact"
+              data-theme="light"
             >
-              <h2 className="mb-4 font-sans text-3xl text-center font-bold">
-                {country.name.common} ({country.name.official})
-              </h2>
-              <p className="mb-2 text-green-700">
-                <strong>Currency:</strong>
-                {country.currencies &&
-                  Object.entries(country.currencies)
-                    .map(([code, curr]) => `${curr.name} (${curr.symbol})`)
+              <div className='card-title flex flex-col'>
+                <div className="text-buttonText">
+                  <SubHeading title={`${country.name.common}`} />
+                </div>
+                <div className="italic">
+                  <SubHeading title={`(${country.name.official})`} />
+                </div>
+              </div>
+              <div className='card-body'>
+                <p className="mb-2 text-green-700">
+                  <strong>Currency:</strong>{' '}
+                  <i className="fas fa-money-bill-wave mr-2"></i>
+                  {country.currencies &&
+                    Object.entries(country.currencies)
+                      .map(([code, curr]) => `${curr.name} (${curr.symbol})`)
+                      .join(', ')}
+                </p>
+                <p className="mb-2">
+                  <strong>Languages:</strong>{' '}
+                  <i className="fas fa-language mr-2"></i>
+                  {Object.entries(country.languages)
+                    .map(([code, name]) => name)
                     .join(', ')}
-              </p>
-              <p className="mb-2">
-                <strong>Languages:</strong>{' '}
-                {Object.entries(country.languages)
-                  .map(([code, name]) => name)
-                  .join(', ')}
-              </p>
+                </p>
+              </div>
               <p className="mb-2">
                 <strong>Flag:</strong>
                 <img
