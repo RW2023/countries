@@ -1,10 +1,13 @@
-//src/utils/types.ts
+// src/utils/types.ts
 export interface Country {
   name: {
     common: string;
     official: string;
   };
-  flags: string[];
+  flags: {
+    png: string;
+    svg: string;
+  };
   capital: string[];
   population: number;
   region: string;
@@ -17,5 +20,5 @@ export interface Country {
     };
   };
   timezones: string[];
-  // Add other properties as needed
+  emoji?: string; // Optional emoji property
 }

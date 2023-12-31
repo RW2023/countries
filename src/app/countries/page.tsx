@@ -3,29 +3,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Loading from '../../components/Loading'; // Adjust the path as necessary
-
-interface Language {
-  code: string;
-  name: string;
-}
-
-interface Currency {
-  name: string;
-  symbol: string;
-}
-
-interface Flags {
-  png: string;
-  svg: string;
-}
-
-interface Country {
-  name: string;
-  emoji: string;
-  currencies: Record<string, Currency> | null;
-  languages: Language[];
-  flags: Flags;
-}
+import { Country } from '@/utils/types';
 
 const CountriesPage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -41,8 +19,10 @@ const CountriesPage = () => {
       });
   }, []);
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredCountries = countries.filter(
+    (country) =>
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      country.name.official.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -59,16 +39,15 @@ const CountriesPage = () => {
         <Loading text="countries" />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-          {filteredCountries.map((country: Country, index: number) => (
+          {filteredCountries.map((country, index) => (
             <div
               key={index}
               className="p-6 rounded-lg shadow-lg bg-secondary"
               data-theme="corporate"
             >
               <h2 className="mb-4 font-sans text-3xl text-center font-bold">
-                {country.name}
+                {country.name.common} ({country.name.official})
               </h2>
-
               <p className="mb-2 text-green-700">
                 <strong>Currency:</strong>
                 {country.currencies &&
@@ -78,16 +57,23 @@ const CountriesPage = () => {
               </p>
               <p className="mb-2">
                 <strong>Languages:</strong>{' '}
-                {country.languages.map((lang) => lang.name).join(', ')}
+                {Object.entries(country.languages)
+                  .map(([code, name]) => name)
+                  .join(', ')}
               </p>
               <p className="mb-2">
-                <strong>Flag:</strong> {country.emoji}
+                <strong>Flag:</strong>
+                <img
+                  src={country.flags.png}
+                  alt={`${country.name.common} flag`}
+                  className="w-full h-auto border border-background rounded shadow-2xl transform transition-transform duration-300 hover:scale-105"
+                />
               </p>
-              <img
-                src={country.flags.png}
-                alt={`${country.name} flag`}
-                className="w-full h-auto border border-background rounded shadow-2xl transform transition-transform duration-300 hover:scale-105"
-              />
+              {country.emoji && (
+                <p className="mb-2">
+                  <strong>Emoji:</strong> {country.emoji}
+                </p>
+              )}
             </div>
           ))}
         </div>
