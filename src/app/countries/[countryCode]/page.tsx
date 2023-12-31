@@ -14,12 +14,10 @@ const CountryDetailsPage = () => {
 export default CountryDetailsPage;
 
 export async function generateStaticParams() {
-  // Fetch the list of country codes dynamically from an API or data source
   const response = await fetch('https://api.example.com/countries');
-  const countries = await response.json();
+  const countries: Country[] = await response.json(); // Assuming the API returns an array of Country objects
 
-  return countries.map((country) => ({
+  return countries.map((country: Country) => ({
     params: { countryCode: country.code },
   }));
 }
-
