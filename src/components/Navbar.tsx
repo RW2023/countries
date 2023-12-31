@@ -74,7 +74,7 @@ const Navbar = () => {
                 className="rounded-full border-2 border-base-300"
               />
               {/* SubHeading */}
-              <SubHeading title="Countries API" />{' '}
+              <SubHeading title="Countries API app" />{' '}
             </div>
           </span>
         </Link>
