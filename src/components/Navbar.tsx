@@ -143,7 +143,7 @@ const Navbar = () => {
               <i className="fas fa-info mr-2"></i>About
             </span>
           </Link>
-          <Link href="/about">
+          <Link href="/feedback">
             <span
               onClick={closeNavbar}
               className="block mt-4 lg:inline-block lg:mt-0 text-strokeLight text-xl hover:underline mr-4 cursor-pointer"
