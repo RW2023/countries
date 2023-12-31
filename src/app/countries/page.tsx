@@ -6,6 +6,8 @@ import Loading from '../../components/Loading'; // Adjust the path as necessary
 import { Country } from '@/utils/types';
 import Heading from '@/components/Heading';
 import SubHeading from '@/components/SubHeading';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const CountriesPage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -47,7 +49,7 @@ const CountriesPage = () => {
               className="p-6 rounded-lg shadow-lg bg-base-100 card-compact"
               data-theme="light"
             >
-              <div className='card-title flex flex-col'>
+              <div className="card-title flex flex-col">
                 <div className="text-buttonText">
                   <SubHeading title={`${country.name.common}`} />
                 </div>
@@ -55,7 +57,7 @@ const CountriesPage = () => {
                   <SubHeading title={`(${country.name.official})`} />
                 </div>
               </div>
-              <div className='card-body'>
+              <div className="card-body">
                 <p className="mb-2 text-green-700">
                   <strong>Currency:</strong>{' '}
                   <i className="fas fa-money-bill-wave mr-2"></i>
@@ -72,14 +74,22 @@ const CountriesPage = () => {
                     .join(', ')}
                 </p>
               </div>
-              <p className="mb-2">
+              <div className="mb-2">
                 <strong>Flag:</strong>
-                <img
-                  src={country.flags.png}
-                  alt={`${country.name.common} flag`}
-                  className="w-full h-auto border border-background rounded shadow-2xl transform transition-transform duration-300 hover:scale-105"
-                />
-              </p>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative w-full h-64 border border-background rounded shadow-2xl" // Set a fixed height, adjust as needed
+                >
+                  <Image
+                    src={country.flags.png}
+                    alt={`${country.name.common} flag`}
+                    layout="fill"
+                    objectFit="cover" // Keeps the aspect ratio
+                  />
+                </motion.div>
+              </div>
               {country.emoji && (
                 <p className="mb-2">
                   <strong>Emoji:</strong> {country.emoji}
