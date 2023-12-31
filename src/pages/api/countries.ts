@@ -20,7 +20,7 @@ interface GraphQLResponse {
 interface RestCountry {
   cca2: string;
   flags: string[];
-  // ... other properties
+  // Add other properties as required from RestCountry API
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -28,7 +28,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const restCountriesResponse = await axios.get(
       'https://restcountries.com/v3.1/all?fields=name,flags,capital,currencies,languages,population,region,subregion,timezones',
     );
-
     const restCountriesData = restCountriesResponse.data;
 
     const graphqlQuery = `{ countries { code, name, languages { code, name } } }`;
@@ -39,13 +38,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const combinedData = restCountriesData.map((restCountry: RestCountry) => {
       const graphqlCountry = graphqlData.countries.find(
-        (country) => country.code === restCountry.cca2,
+        (gqlCountry) => gqlCountry.code === restCountry.cca2,
       );
 
       return {
         ...restCountry,
         ...graphqlCountry,
-        flag: restCountry.flags[1],
+        code: restCountry.cca2,
       };
     });
 
