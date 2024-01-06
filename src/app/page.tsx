@@ -1,25 +1,24 @@
 import Link from "next/link";
+import Image from "next/image";
+import HomeHeading from "@/components/HomeHeading";
+import HomeSubHeading from "@/components/HomeSubHeading";
+
 
 export default function Home() {
   return (
     <div className="hero-overlay bg-opacity-80">
       <div className="relative hero min-h-screen">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <Image
           className="absolute top-0 left-0 object-cover w-full h-full"
-          src="/earth2.mp4"
-        ></video>
+          src="/hero.png"
+          alt="Descriptive text"
+          width={1920}
+          height={1080}
+        />
         <div className="relative hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold text-headline text-stroke-black">
-             Countries
-            </h1>
-            <p className="mb-5 text-2xl text-headline">
-                Discover the world and it&rsquo;s countries
-            </p>
+            <HomeHeading title="Countries" />
+<HomeSubHeading title = 'Discover the world and it&rsquo;s countries' iconClass = 'fas fa-globe-americas' />
             <Link href="/countries">
               <button
                 type="button"
