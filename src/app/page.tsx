@@ -7,14 +7,14 @@ export default function Home() {
   return (
     <div className="hero-overlay bg-opacity-80">
       <div className="relative hero min-h-screen">
-        <Image
+        {/* <Image
           className="absolute top-0 left-0 object-cover w-full h-full"
           src="/hero.png"
           alt="digital glob"
           width={1792}
           height={1024}
           layout="responsive"
-        />
+        /> */}
         <div className="relative hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <HomeHeading title="Countries" />
