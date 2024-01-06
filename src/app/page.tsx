@@ -1,8 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
-import HomeHeading from "@/components/HomeHeading";
-import HomeSubHeading from "@/components/HomeSubHeading";
-
+import Link from 'next/link';
+import Image from 'next/image';
+import HomeHeading from '@/components/HomeHeading';
+import HomeSubHeading from '@/components/HomeSubHeading';
 
 export default function Home() {
   return (
@@ -11,14 +10,18 @@ export default function Home() {
         <Image
           className="absolute top-0 left-0 object-cover w-full h-full"
           src="/hero.png"
-          alt="Descriptive text"
-          width={1920}
-          height={1080}
+          alt="digital glob"
+          width={1792}
+          height={1024}
+          layout="responsive"
         />
         <div className="relative hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <HomeHeading title="Countries" />
-<HomeSubHeading title = 'Discover the world and it&rsquo;s countries' iconClass = 'fas fa-globe-americas' />
+            <HomeSubHeading
+              title="Discover the world and it&rsquo;s countries"
+              iconClass="fas fa-globe-americas"
+            />
             <Link href="/countries">
               <button
                 type="button"
