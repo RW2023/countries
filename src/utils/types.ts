@@ -1,4 +1,3 @@
-// src/utils/types.ts
 export interface Country {
   name: {
     common: string;
@@ -8,10 +7,10 @@ export interface Country {
     png: string;
     svg: string;
   };
-  capital: string[];
-  population: number;
-  region: string;
-  subregion: string;
+  capital: string[]; // Array of the country's capital cities
+  population: number; // The population of the country
+  region: string; // The region where the country is located
+  subregion: string; // The subregion where the country is located
   languages: { [key: string]: string };
   currencies: {
     [key: string]: {
@@ -19,6 +18,7 @@ export interface Country {
       symbol: string;
     };
   };
-  timezones: string[];
+  timezones: string[]; // Array of the country's timezones
   emoji?: string; // Optional emoji property
+  code: string;
 }

@@ -8,6 +8,7 @@ import Heading from '@/components/Heading';
 import SubHeading from '@/components/SubHeading';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CountriesPage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -31,7 +32,7 @@ const CountriesPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Heading title="Countries" iconClass="fas fa-globe" />{' '}
+      <Heading title="Countries" iconClass="fas fa-globe" />
       <input
         type="text"
         placeholder="Search countries..."
@@ -43,9 +44,9 @@ const CountriesPage = () => {
         <Loading text="countries" />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-          {filteredCountries.map((country, index) => (
+          {filteredCountries.map((country) => (
             <div
-              key={index}
+              key={country.code}
               className="p-6 rounded-lg shadow-lg bg-base-100 card-compact"
               data-theme="light"
             >
@@ -57,9 +58,9 @@ const CountriesPage = () => {
                   <SubHeading title={`(${country.name.official})`} />
                 </div>
               </div>
-              <div className="card-body">
+              <div className="card-body text-xl">
                 <p className="mb-2 text-green-700">
-                  <strong>Currency:</strong>{' '}
+                  <strong>Currency:</strong>
                   <i className="fas fa-money-bill-wave mr-2"></i>
                   {country.currencies &&
                     Object.entries(country.currencies)
@@ -67,7 +68,7 @@ const CountriesPage = () => {
                       .join(', ')}
                 </p>
                 <p className="mb-2">
-                  <strong>Languages:</strong>{' '}
+                  <strong>Languages:</strong>
                   <i className="fas fa-language mr-2"></i>
                   {Object.entries(country.languages)
                     .map(([code, name]) => name)
@@ -80,14 +81,18 @@ const CountriesPage = () => {
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="relative w-full h-64 border border-background rounded shadow-2xl" // Set a fixed height, adjust as needed
+                  className="relative w-full h-64 border border-background rounded shadow-2xl"
                 >
-                  <Image
-                    src={country.flags.png}
-                    alt={`${country.name.common} flag`}
-                    layout="fill"
-                    objectFit="cover" // Keeps the aspect ratio
-                  />
+                  <Link href={`/app/countries/${country.code}/`} passHref>
+                    <div className="relative w-full h-64">
+                      <Image
+                        src={country.flags.png}
+                        alt={`${country.name.common} flag`}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                  </Link>
                 </motion.div>
               </div>
               {country.emoji && (
